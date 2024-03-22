@@ -30,24 +30,24 @@ class _CustomBottomNavigationScreenState
       bottomNavigationBar: Directionality(
         textDirection: TextDirection.rtl,
         child: BottomNavigationBar(
-
-          items: [
+          items:  <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Image.asset('images/aviz-icon.png'),
+                activeIcon: Image.asset('images/bottomnav-icon.png',height: 32,width: 32),
+                icon: Image.asset('images/bottomnav-icon1.png',height: 35,width: 35),
                 label: 'آویز آگهی ها'),
-            BottomNavigationBarItem(
+           const BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.search), label: 'جستجو'),
-            BottomNavigationBarItem(
+           const BottomNavigationBarItem(
                 icon: FaIcon(Icons.add_circle_outline_rounded, size: 35),
                 label: 'افزودن آویز'),
-            BottomNavigationBarItem(
+           const BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.circleUser), label: 'آویز من'),
           ],
           unselectedItemColor: Colors.grey,
           selectedItemColor: AppColor.primary,
           showUnselectedLabels: true,
           unselectedLabelStyle: TextStyle(color: Colors.grey),
-          type: BottomNavigationBarType.shifting,
+          type: BottomNavigationBarType.fixed,
           currentIndex: index,
           elevation: 0,
           iconSize: 30,
