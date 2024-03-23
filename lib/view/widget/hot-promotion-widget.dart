@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget HotAvizWidget() {
+Widget HotPromotionWidget() {
   return Container(
     width: 224,
     padding: const EdgeInsets.all(16),
