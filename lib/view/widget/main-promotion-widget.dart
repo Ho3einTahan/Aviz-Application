@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 Widget MainPromotionWidget() {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-    margin: EdgeInsets.symmetric(horizontal: 16),
+    padding:const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    margin:const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
     decoration: BoxDecoration(
       color: Colors.white,
       boxShadow: [
-        BoxShadow(color: Colors.white.withOpacity(0.2)),
+        BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10),
       ],
     ),
     child: Row(
@@ -50,7 +50,9 @@ Widget MainPromotionWidget() {
           ),
         ),
         SizedBox(width: 16),
-        Image.asset('images/home3.png'),
+        ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Image.asset('images/home3.png')),
       ],
     ),
   );
