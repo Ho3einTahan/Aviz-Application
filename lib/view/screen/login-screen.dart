@@ -67,14 +67,14 @@ class LoginScreen extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: 'شماره موبایل',
-          fillColor: AppColor.grayFieldColor,
+          fillColor: AppColor.greyFieldColor,
           filled: true,
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColor.grayFieldColor)),
+              borderSide: BorderSide(color: AppColor.greyFieldColor)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColor.grayFieldColor)),
+              borderSide: BorderSide(color: AppColor.greyFieldColor)),
           border: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColor.grayFieldColor)),
+              borderSide: BorderSide(color: AppColor.greyFieldColor)),
         ),
       ),
     );
