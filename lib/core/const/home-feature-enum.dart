@@ -4,4 +4,7 @@ enum HomeFeatureEnum {
   countRoom,
   floor,
   yearOfBuild,
+  elevator,
+  parking,
+  garage
 }
