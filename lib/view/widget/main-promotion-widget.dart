@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget MainPromotionWidget() {
   return Container(
-    padding:const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-    margin:const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
     decoration: BoxDecoration(
       color: Colors.white,
       boxShadow: [
@@ -18,13 +17,13 @@ Widget MainPromotionWidget() {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('واحد دوبلکس فول امکانات',
+              const Text('واحد دوبلکس فول امکانات',
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: Colors.black)),
               const SizedBox(height: 8),
-              Text(
+              const Text(
                   'سال ساخت ۱rtryrytytutyiyiuyo۳۹۸، سند تک برگ، دوبلکس تجهیزات کامل',
                   style: TextStyle(
                       fontSize: 12,
@@ -34,11 +33,11 @@ Widget MainPromotionWidget() {
               const SizedBox(height: 16),
               Row(
                 children: [
-                  Text('قیمت:'),
-                  Spacer(),
+                  const Text('قیمت:'),
+                  const Spacer(),
                   Container(
                     color: const Color(0xffF9FAFB),
-                    child: Text('۲۵٬۶۸۳٬۰۰۰٬۰۰۰',
+                    child: const Text('۲۵٬۶۸۳٬۰۰۰٬۰۰۰',
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: 12,
@@ -49,7 +48,7 @@ Widget MainPromotionWidget() {
             ],
           ),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         ClipRRect(
             borderRadius: BorderRadius.circular(4),
             child: Image.asset('images/home3.png')),
