@@ -23,32 +23,7 @@ class CategoryDetailScreen extends StatelessWidget {
           textDirection: TextDirection.rtl,
           child: Column(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(CupertinoIcons.left_chevron, size: 30),
-                    ),
-                    Text(
-                      'دسته بندی آویز',
-                      style: TextStyle(
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 17),
-                    ),
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(FontAwesomeIcons.xmark, size: 30),
-                    ),
-                  ],
-                ),
-              ),
-              StepProgressIndicatorWidget(currentStep: 2),
-              const SizedBox(height: 5),
+              StepProgressIndicatorWidget(currentStep: 2,context: context),
               SizedBox(
                 height: 500,
                 child: ListView.builder(
