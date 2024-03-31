@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:input_quantity/input_quantity.dart';
 
+import '../widget/customButton.dart';
+
 class AddPromotionDetailScreen extends StatefulWidget {
   const AddPromotionDetailScreen({super.key});
 
@@ -16,7 +18,6 @@ class AddPromotionDetailScreen extends StatefulWidget {
 }
 
 class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
-  bool isCheck = false;
   bool isCheckElevator = false;
   bool isCheckParking = false;
   bool isCheckGarage = false;
@@ -97,10 +98,10 @@ class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
                 ),
                 Row(
                   children: [
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     Image.asset('images/clipboard.png'),
-                    SizedBox(width: 8),
-                    Text('ویژگی ها',
+                    const SizedBox(width: 8),
+                    const Text('ویژگی ها',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -108,13 +109,13 @@ class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
                   ],
                 ),
                 const Padding(
-                  padding: const EdgeInsets.only(
+                  padding: EdgeInsets.only(
                       right: 16, left: 110, top: 32, bottom: 16),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('متراژ'),
-                      const Text('تعداد اتاق'),
+                      Text('متراژ'),
+                      Text('تعداد اتاق'),
                     ],
                   ),
                 ),
@@ -126,13 +127,13 @@ class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
                   ],
                 ),
                 const Padding(
-                  padding: const EdgeInsets.only(
+                  padding: EdgeInsets.only(
                       right: 16, left: 110, top: 32, bottom: 16),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('طبقه'),
-                      const Text('سال ساخت'),
+                      Text('طبقه'),
+                      Text('سال ساخت'),
                     ],
                   ),
                 ),
@@ -144,6 +145,9 @@ class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
                   ],
                 ),
                 _FeatureWidget(),
+                const SizedBox(height: 11),
+                CustomButton(text: 'بعدی', onTap: () {}),
+                const SizedBox(height: 32),
               ],
             ),
           ),
@@ -165,13 +169,8 @@ class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
             fillColor: AppColor.greyFieldColor,
             enabledBorder:
                 const OutlineInputBorder(borderSide: BorderSide.none)),
-        maxVal: 100,
-        initVal: 0,
-        minVal: -100,
         steps: 1,
-        onQtyChanged: (val) {
-          print(val);
-        },
+        onQtyChanged: (val) {},
       ),
     );
   }
@@ -179,40 +178,78 @@ class _AddPromotionDetailScreenState extends State<AddPromotionDetailScreen> {
   Widget _FeatureWidget() {
     return Column(
       children: [
-        Row(
-          children: [
-            FaIcon(FontAwesomeIcons.wandMagicSparkles, color: AppColor.primary),
-            SizedBox(width: 8),
-            Text('امکانات',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
-          ],
+        Padding(
+          padding: const EdgeInsets.only(top: 16, bottom: 8),
+          child: Row(
+            children: [
+              const SizedBox(width: 16),
+              FaIcon(FontAwesomeIcons.wandMagicSparkles,
+                  color: AppColor.primary),
+              const SizedBox(width: 8),
+              const Text('امکانات',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+            ],
+          ),
         ),
-        _FeatureItem(title: 'آسانسور'),
+        _FeatureItem(title: 'آسانسور', homeFeature: HomeFeatureEnum.elevator),
+        _FeatureItem(title: 'پارکینگ', homeFeature: HomeFeatureEnum.parking),
+        _FeatureItem(title: 'انباری', homeFeature: HomeFeatureEnum.garage),
       ],
     );
   }
 
-  Widget _FeatureItem({required String title}) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColor.greyFieldColor),
-      ),
-      child: Row(
-        children: [
-          Text(title),
-          Switch(
-            activeColor: AppColor.primary,
-            activeTrackColor: Colors.white,
-            focusColor: Colors.black,
-            inactiveTrackColor: Colors.green,
-            inactiveThumbColor: Colors.yellow,
-            value: isCheck,
-            onChanged: (value) {
-              isCheck = !isCheck;
-              setState(() {});
-            },
-          ),
-        ],
+  Widget _FeatureItem(
+      {required String title, required HomeFeatureEnum homeFeature}) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          if (homeFeature == HomeFeatureEnum.garage) {
+            isCheckGarage = !isCheckGarage;
+          } else if (homeFeature == HomeFeatureEnum.parking) {
+            isCheckParking = !isCheckParking;
+          } else {
+            isCheckElevator = !isCheckElevator;
+          }
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.only(right: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        decoration: BoxDecoration(
+          border: Border.all(width: 3, color: const Color(0xffF2F4F7)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title),
+            Directionality(
+              textDirection: TextDirection.ltr,
+              child: Switch(
+                materialTapTargetSize: MaterialTapTargetSize.padded,
+                activeColor: Colors.white,
+                activeTrackColor: AppColor.primary,
+                inactiveTrackColor: AppColor.greyText,
+                inactiveThumbColor: Colors.white,
+                value: homeFeature == HomeFeatureEnum.garage
+                    ? isCheckGarage
+                    : homeFeature == HomeFeatureEnum.parking
+                        ? isCheckParking
+                        : isCheckElevator,
+                onChanged: (value) {
+                  setState(() {
+                    if (homeFeature == HomeFeatureEnum.garage) {
+                      isCheckGarage = value;
+                    } else if (homeFeature == HomeFeatureEnum.parking) {
+                      isCheckParking = value;
+                    } else {
+                      isCheckElevator = value;
+                    }
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
